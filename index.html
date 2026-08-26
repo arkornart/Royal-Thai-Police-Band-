@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Thai Police Band | ฝ่ายดนตรี กองสวัสดิการ สำนักงานกำลังพล</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6b0f1a;
+            --primary-dark: #4a0810;
+            --accent: #d4af37;
+            --accent-light: #f4e8c1;
+            --bg-light: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --text-muted: #555555;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-light); color: var(--text-dark); font-family: 'Sarabun', sans-serif; line-height: 1.7; }
+        h1, h2, h3, .nav-link, .tree-title { font-family: 'Chakra Petch', 'Sarabun', sans-serif; }
+
+        /* Modern Hero Header */
+        header { 
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); 
+            color: white; 
+            padding: 3.5rem 1rem 2.5rem 1rem; 
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .logo-placeholder {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px auto;
+            border: 2px dashed var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+            font-size: 0.8rem;
+            backdrop-filter: blur(5px);
+        }
+
+        header h1 { font-size: 2rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #ffffff; }
+        header p.sub-title { font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-top: 5px; }
+
+        /* Navigation */
+        nav { 
+            background: rgba(74, 8, 16, 0.95); 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            padding: 12px; 
+            flex-wrap: wrap; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        nav a { color: #e0e0e0; text-decoration: none; font-weight: 600; padding: 8px 18px; border-radius: 20px; transition: all 0.3s ease; font-size: 0.9rem; }
+        nav a:hover { background: var(--accent); color: var(--primary-dark); }
+
+        /* Container & Card Style */
+        .container { max-width: 1140px; margin: 40px auto; padding: 0 20px; }
+        section { background: white; padding: 40px; border-radius: 12px; margin-bottom: 35px; box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.03); }
+        
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-header h2 { font-size: 1.6rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; display: inline-block; position: relative; padding-bottom: 10px; }
+        .section-header h2::after { content: ""; position: absolute; width: 50%; height: 3px; background: var(--accent); bottom: 0; left: 25%; }
+
+        /* Vision Section */
+        .vision-card {
+            background: linear-gradient(to right, #fff9f9, #ffffff);
+            border-left: 5px solid var(--primary);
+            padding: 25px 30px;
+            border-radius: 8px;
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(107, 15, 26, 0.05);
+            font-weight: 600;
+        }
+
+        /* Timeline / History */
+        .timeline { list-style: none; position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline li { padding-left: 30px; margin-bottom: 25px; position: relative; border-left: 2px solid #e9ecef; }
+        .timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 2px var(--primary); }
+        .timeline-year { font-weight: 700; color: var(--primary); font-family: 'Chakra Petch', sans-serif; display: inline-block; width: 110px; font-size: 1.05rem; }
+
+        /* Structural Cards (Minimal 4 Items) */
+        .struct-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .struct-card { 
+            background: #fafafa; 
+            border: 1px solid #eee; 
+            padding: 25px 20px; 
+            border-radius: 10px; 
+            text-align: center; 
+            font-weight: 700; 
+            color: var(--primary);
+            transition: 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .struct-card:hover { transform: translateY(-5px); border-color: var(--accent); background: #fff; }
+
+        /* Organization Tree Diagram with Commander Photos */
+        .tree-container { display: flex; flex-direction: column; align-items: center; overflow-x: auto; padding: 20px 0; }
+        .tree-node {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            width: 230px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .tree-node:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+        
+        /* กรอบรูปภาพผู้บังคับบัญชา */
+        .cmd-photo-placeholder {
+            width: 90px;
+            height: 115px;
+            border-radius: 6px;
+            background-color: #eee;
+            border: 1px dashed #bbb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .cmd-photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tree-node.top { background: #fff; border-color: var(--primary); border-width: 3px; }
+        .tree-node.top .name { color: var(--primary-dark); font-size: 1rem; }
+        .tree-node.top .pos { color: var(--primary); font-weight: 700; }
+        
+        .tree-node.sub-top { background: #fff; border-color: var(--accent); }
+        
+        .tree-node .name { font-weight: 700; font-size: 0.9rem; color: var(--primary-dark); margin-top: 4px; }
+        .tree-node .pos { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; line-height: 1.3; }
+
+        .line-v { width: 2px; height: 30px; background-color: var(--primary); margin: 0 auto; }
+        .line-h { height: 2px; background-color: var(--primary); margin: 0 auto; }
+        
+        .tree-level-2 { display: flex; gap: 40px; justify-content: center; position: relative; }
+        .tree-level-3 { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; width: 100%; }
+
+        /* Mission Cards */
+        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .mission-card { background: #fff; border-radius: 8px; border: 1px solid #eaeaea; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .mission-card h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 15px; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+        .mission-card ul { list-style: none; }
+        .mission-card li { margin-bottom: 10px; font-size: 0.92rem; position: relative; padding-left: 18px; }
+        .mission-card li::before { content: "•"; color: var(--accent); font-weight: bold; position: absolute; left: 0; font-size: 1.2rem; line-height: 1; }
+
+        /* News Cards */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .news-card { border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: 0.3s; }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .news-img { width: 100%; height: 200px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 0.9rem; }
+        .news-img img { width: 100%; height: 100%; object-fit: cover; }
+        .news-body { padding: 22px; }
+        .news-date { font-size: 0.8rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+        .news-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; line-height: 1.4; }
+        .news-desc { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Contact Section */
+        .contact-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .contact-info p { margin-bottom: 12px; }
+        .contact-info a { color: var(--primary); font-weight: 600; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+
+        /* Footer */
+        footer { background: var(--primary-dark); color: white; text-align: center; padding: 35px 20px; border-top: 4px solid var(--accent); font-size: 0.9rem; }
+        footer p.copy { opacity: 0.7; font-size: 0.8rem; margin-top: 8px; }
+
+        @media (max-width: 900px) {
+            .tree-level-2 { flex-direction: column; gap: 15px; align-items: center; }
+            .tree-level-3 { flex-direction: column; align-items: center; }
+            .line-h { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- เว้นพื้นที่สำหรับใส่โลโก้ -->
+        <div class="logo-placeholder">
+            <span>[ ใส่โลโก้ ]</span>
+        </div>
+        <h1>ROYAL THAI POLICE BAND</h1>
+        <p class="sub-title">ฝ่ายดนตรี กองสวัสดิการ สำนักงานกำลังพล</p>
+    </header>
+
+    <nav>
+        <a href="#vision">วิสัยทัศน์</a>
+        <a href="#history">ประวัติความเป็นมา</a>
+        <a href="#structure">โครงสร้างองค์กร</a>
+        <a href="#chart">ผังผู้บังคับบัญชา</a>
+        <a href="#missions">ภารกิจความรับผิดชอบ</a>
+        <a href="#news">ข่าวสาร & กิจกรรม</a>
+        <a href="#contact">ติดต่อเรา</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- วิสัยทัศน์ -->
+        <section id="vision">
+            <div class="section-header">
+                <h2>วิสัยทัศน์ (Vision)</h2>
+            </div>
+            <div class="vision-card">
+                "การดำเนินการเกี่ยวกับงานสวัสดิการและการสนับสนุนภารกิจด้านดนตรีของสำนักงานตำรวจแห่งชาติ ด้วยความโปร่งใส ถูกต้อง และมีประสิทธิภาพเพื่อสร้างความเชื่อมั่น"
+            </div>
+        </section>
+
+        <!-- ประวัติความเป็นมา -->
+        <section id="history">
+            <div class="section-header">
+                <h2>ประวัติความเป็นมา</h2>
+            </div>
+            <ul class="timeline">
+                <li><span class="timeline-year">พ.ศ. 2493</span> จัดตั้งครั้งแรกโดย พล.ต.อ.หลวงชาติตระการโกศล จัดวงขลุ่ยกลอง นำแถวเปลี่ยนเวรกองรักษาการณ์ ณ วังปารุสกวัน</li>
+                <li><span class="timeline-year">พ.ศ. 2494</span> จัดตั้งวงเครื่องทองเหลือง เพื่อใช้ในพิธีสวนสนามวันตำรวจ มีฐานะเป็นหมวดดุริยางค์ สังกัดโรงเรียนพลตำรวจ</li>
+                <li><span class="timeline-year">พ.ศ. 2495</span> พล.ต.อ.เผ่า ศรียานนท์ อธิบดีกรมตำรวจ ขยายวงเครื่องทองเหลืองออกเป็นวงโยธวาทิต</li>
+                <li><span class="timeline-year">พ.ศ. 2501</span> ปรับเป็น แผนกดุริยางค์ สังกัดกองบัญชาการจเรตำรวจ</li>
+                <li><span class="timeline-year">พ.ศ. 2503</span> ย้ายมาสังกัดเป็น แผนกดุริยางค์ กองสวัสดิการตำรวจ</li>
+                <li><span class="timeline-year">8 ส.ค. 2516</span> ย้ายมาที่ตั้งปัจจุบัน ณ อ.ปากเกร็ด จ.นนทบุรี บนพื้นที่ 15 ไร่ 48 ตร.ว.</li>
+                <li><span class="timeline-year">พ.ศ. 2552</span> เปลี่ยนชื่อเป็น <strong>"ฝ่ายดนตรี กองสวัสดิการ สำนักงานกำลังพล สำนักงานตำรวจแห่งชาติ"</strong> ถึงปัจจุบัน</li>
+            </ul>
+        </section>
+
+        <!-- โครงสร้างหน่วยงาน (เฉพาะหัวข้อหลัก) -->
+        <section id="structure">
+            <div class="section-header">
+                <h2>โครงสร้างหน่วยงาน</h2>
+            </div>
+            <div class="struct-grid">
+                <div class="struct-card">1. งานบริการดนตรี</div>
+                <div class="struct-card">2. งานดนตรี</div>
+                <div class="struct-card">3. งานวิชาการดนตรี</div>
+                <div class="struct-card">4. งานโรงเรียนการดนตรี</div>
+            </div>
+        </section>
+
+        <!-- ผังผู้บังคับบัญชา (แผนภูมิต้นไม้ พร้อมรูปภาพ) -->
+        <section id="chart">
+            <div class="section-header">
+                <h2>ผังผู้บังคับบัญชา</h2>
+            </div>
+            <div class="tree-container">
+                
+                <!-- ระดับที่ 1: ผกก. -->
+                <div class="tree-node top">
+                    <div class="cmd-photo-placeholder">
+                        <span>[ ใส่รูปท่าน ผกก. ]</span>
+                    </div>
+                    <div class="name">พ.ต.อ.อัฐพร กุญแจทอง</div>
+                    <div class="pos">ผกก.ฝ่ายดนตรี สก.</div>
+                </div>
+
+                <div class="line-v"></div>
+                <div class="line-h" style="width: 450px;"></div>
+                <div class="line-v"></div>
+
+                <!-- ระดับที่ 2: รอง ผกก. -->
+                <div class="tree-level-2">
+                    <div class="tree-node sub-top">
+                        <div class="cmd-photo-placeholder">
+                            <span>[ ใส่รูป รอง ผกก. ]</span>
+                        </div>
+                        <div class="name">พ.ต.ท.ศักดิ์สิทธิ์ สมรรถนาวิน</div>
+                        <div class="pos">รอง ผกก.ฝ่ายดนตรี สก. (1)</div>
+                    </div>
+                    <div class="tree-node sub-top">
+                        <div class="cmd-photo-placeholder">
+                            <span>[ ใส่รูป รอง ผกก. ]</span>
+                        </div>
+                        <div class="name">พ.ต.ท.อนุรักษ์ อิ่มรส</div>
+                        <div class="pos">รอง ผกก.ฝ่ายดนตรี สก. (2)</div>
+                    </div>
+                </div>
+
+                <div class="line-v" style="height: 40px;"></div>
+                <div class="line-h" style="width: 85%;"></div>
+                <div class="line-v"></div>
+
+                <!-- ระดับที่ 3: สว. แยก 4 สายงาน -->
+                <div class="tree-level-3">
+                    <div class="tree-node">
+                        <div class="cmd-photo-placeholder">
+                            <span>[ ใส่รูป สว. ]</span>
+                        </div>
+                        <div class="name">ว่าที่ พ.ต.ท.กานต์ โชติชูตระกูล</div>
+                        <div class="pos">สว.ฝ่ายดนตรี สก.<br>(งานบริการดนตรี)</div>
+                    </div>
+                    <div class="tree-node">
+                        <div class="cmd-photo-placeholder">
+                            <span>[ ใส่รูป สว. ]</span>
+                        </div>
+                        <div class="name">ว่าที่ พ.ต.ต.ปริญญา ดุริยะวิจิตร</div>
+                        <div class="pos">สว.ฝ่ายดนตรี สก.<br>(งานดนตรี)</div>
+                    </div>
+                    <div class="tree-node">
+                        <div class="cmd-photo-placeholder">
+                            <span>[ ใส่รูป สว. ]</span>
+                        </div>
+                        <div class="name">ว่าที่ พ.ต.ท.หญิง นิสากร จิตถนอม</div>
+                        <div class="pos">สว.ฝ่ายดนตรี สก.<br>(งานวิชาการดนตรี)</div>
+                    </div>
+                    <div class="tree-node">
+                        <div class="cmd-photo-placeholder">
+                            <span>[ ใส่รูป สว. ]</span>
+                        </div>
+                        <div class="name">ว่าที่ พ.ต.ต.หญิง ธัญญ์นรี วีณากร</div>
+                        <div class="pos">สว.ฝ่ายดนตรี สก.<br>(งานโรงเรียนการดนตรี)</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- หน้าที่และภารกิจ -->
+        <section id="missions">
+            <div class="section-header">
+                <h2>หน้าที่และภารกิจความรับผิดชอบ</h2>
+            </div>
+            <div class="mission-grid">
+                
+                <div class="mission-card">
+                    <h3>1. งานบริการดนตรี</h3>
+                    <ul>
+                        <li>งานอำนวยการของฝ่ายดนตรี</li>
+                        <li>งานคลังดนตรี</li>
+                        <li>งานอาภรณ์ด้านดนตรี</li>
+                        <li>งานซ่อมบำรุงเบื้องต้น เครื่องดนตรี และอุปกรณ์ดนตรี</li>
+                        <li>งานการเงิน-บัญชี</li>
+                    </ul>
+                </div>
+
+                <div class="mission-card">
+                    <h3>2. งานดนตรี</h3>
+                    <ul>
+                        <li>เสนอดนตรีประเภทต่างๆ ในงานราชพิธี รัฐพิธี และพิธีการสำคัญของสำนักงานตำรวจแห่งชาติ และหน่วยงานราชการอื่นที่ร้องขอ</li>
+                        <li>การจัดการแสดงดนตรีประเภทต่างๆ เพื่อเป็นสวัสดิการแก่ข้าราชการตำรวจ</li>
+                        <li>รับผิดชอบ: วงโยธวาทิต, ปี่สก็อต, วงหัสดนตรี, เชมเบอร์มิวสิค, วงดนตรีไทย และวงดนตรีประเภทอื่นๆ</li>
+                    </ul>
+                </div>
+
+                <div class="mission-card">
+                    <h3>3. งานวิชาการดนตรี</h3>
+                    <ul>
+                        <li>จัดทำทะเบียนเพลง</li>
+                        <li>ประพันธ์ คิดค้น ดัดแปลงบทเพลง จังหวะลีลา ท่วงทำนองเพลง</li>
+                        <li>เรียบเรียงเสียงประสาน</li>
+                        <li>คัดลอกและซ่อมบำรุงโน้ตเพลง</li>
+                        <li>เก็บรวบรวมข้อมูลเพื่อนำมาวิจัยและพัฒนาทางดุริยางค์</li>
+                        <li>เก็บรวบรวมบทเพลงต่างๆ และตำราทางดนตรี</li>
+                        <li>งานห้องบันทึกเสียง และงานเทคโนโลยีดนตรี</li>
+                    </ul>
+                </div>
+
+                <div class="mission-card">
+                    <h3>4. งานโรงเรียนดนตรี</h3>
+                    <ul>
+                        <li>แนะนำเผยแพร่ข่าวสารการบรรเลงต่างๆ ของงานดุริยางค์ให้เป็นที่รู้จักแพร่หลาย</li>
+                        <li>จัดฝึกอบรมแก่เจ้าหน้าที่และหน่วยงานต่างๆ ในเรื่องเกี่ยวกับดนตรี</li>
+                        <li>งานบริการการศึกษา งานธุรการ ทะเบียนเพลงของงานโรงเรียนดนตรี</li>
+                        <li>งานวิชาการ การเรียน การสอน ภาคทฤษฎีและปฏิบัติ การจัดทำหลักสูตร และตำราเรียนต่างๆ</li>
+                        <li>งานห้องสมุด และพิพิธภัณฑ์ดนตรี</li>
+                        <li>งานส่งเสริมวิชาการดนตรี การจัดกิจกรรมส่งเสริมทางด้านดนตรีนอกเหนือจากการเรียนการสอนปกติ</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ข่าวสารและกิจกรรม -->
+        <section id="news">
+            <div class="section-header">
+                <h2>ข่าวสาร & ภาพกิจกรรม</h2>
+            </div>
+            <div class="news-grid">
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <span>[ พื้นที่ใส่รูปภาพข่าว ]</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">3 กุมภาพันธ์ 2569</div>
+                        <div class="news-title">วงโยธวาทิต ร่วมพิธีวันทหารผ่านศึก ประจำปี 2569</div>
+                        <div class="news-desc">วงโยธวาทิต ฝ่ายดนตรี สก. ร่วมสวนสนามและเดินขบวนพาเหรดเนื่องในวันทหารผ่านศึก ณ อนุสาวรีย์ชัยสมรภูมิ น้อมคารวะแด่วีรบุรุษผู้กล้า</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-img">
+                        <span>[ พื้นที่ใส่รูปภาพข่าว ]</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">6 พฤษภาคม 2569</div>
+                        <div class="news-title">พิธีปิดโครงการ “เสริมสร้างทักษะดนตรี กีฬา ครั้งที่ 2”</div>
+                        <div class="news-desc">พล.ต.ท.ชัยต์พจน สูวรรณรักษ์ เป็นประธานพิธีปิดโครงการเสริมสร้างทักษะดนตรี-กีฬา แก่บุตรหลานข้าราชการตำรวจกว่า 180 คน ณ สโมสรตำรวจ</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-card">
+                    <div class="news-img">
+                        <span>[ พื้นที่ใส่รูปภาพข่าว ]</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">24 กรกฎาคม 2569</div>
+                        <div class="news-title">กิจกรรมจิตอาสาพระราชทาน ณ โรงเรียนวัดบวรนิเวศ</div>
+                        <div class="news-desc">บรรเลงบทเพลงสร้างรอยยิ้ม พร้อมจัดกิจกรรมสอนดนตรีเบื้องต้นแก่น้องๆ เนื่องในโอกาสวันเฉลิมพระชนมพรรษา พระบาทสมเด็จพระเจ้าอยู่หัว</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ช่องทางติดต่อ -->
+        <section id="contact">
+            <div class="section-header">
+                <h2>ช่องทางการติดต่อ</h2>
+            </div>
+            <div class="contact-box">
+                <div class="contact-info">
+                    <p><strong>📍 สถานที่ตั้ง:</strong><br>
+                    กองดุริยางค์ตำรวจ (ฝ่ายดนตรี กองสวัสดิการ สำนักงานกำลังพล)<br>
+                    เลขที่ 91 หมู่ที่ 4 ถนนแจ้งวัฒนะ ตำบลคลองเกลือ อำเภอปากเกร็ด จังหวัดนนทบุรี 11120</p>
+                    
+                    <p><strong>🎥 ช่องทางรับชมผลงานออนไลน์:</strong><br>
+                    YouTube: <a href="https://www.youtube.com/channel/UCQdBOTZ4d9dOp0Kr8sulu4A" target="_blank">ฝ่ายดนตรี Royal Thai Police Music Sub-Division</a></p>
+                </div>
+                <div>
+                    <iframe src="https://maps.google.com/maps?q=แจ้งวัฒนะ%20ปากเกร็ด%20นนทบุรี&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><strong>ROYAL THAI POLICE BAND</strong></p>
+        <p>ฝ่ายดนตรี กองสวัสดิการ สำนักงานกำลังพล สำนักงานตำรวจแห่งชาติ</p>
+        <p class="copy">&copy; 2026 All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
