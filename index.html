@@ -192,15 +192,20 @@
         footer { background: var(--primary-dark); color: white; text-align: center; padding: 35px 20px; border-top: 4px solid var(--accent); font-size: 0.9rem; }
         footer p.copy { opacity: 0.7; font-size: 0.8rem; margin-top: 8px; }
 
+       /* ปรับแต่งให้หน้าจอมือถือแสดงผังแนวนอนเหมือนในคอม (ใช้นิ้วเลื่อนซ้าย-ขวาได้) */
         @media (max-width: 900px) {
-            .tree-level-2 { flex-direction: column; gap: 15px; align-items: center; }
-            .tree-level-3 { flex-direction: column; align-items: center; }
-            .line-h { display: none; }
+            .tree-container { 
+                align-items: flex-start; 
+                padding-bottom: 20px; 
+            }
+            .tree-level-2, .tree-level-3 { 
+                flex-direction: row !important; 
+                flex-wrap: nowrap !important; 
+            }
+            .line-h { 
+                display: block !important; 
+            }
         }
-    </style>
-</head>
-<body>
-
    <header>
         <!-- โลโก้ฝ่ายดนตรี -->
         <div class="logo-placeholder" style="border: none; background: transparent;">
